@@ -1,0 +1,298 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+
+<div class="play-container">
+    <div class="global-loader active">
+        {{> treasurehunt/loading_animation }}
+    </div>
+    {{! Main map page }}
+    <div class="map-page">
+        <!-- sidebar mask -->
+        <div class="sidebar-mask"></div>
+
+        <!-- Sidebar search-->
+        <div id="searchpanel" class="sidebar sidebar-left">
+            <!-- Header -->
+            <nav class="play-navbar map-navbar">
+                <button class="btn close-sidebar">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <span class="title">{{#str}} search, mod_treasurehunt{{/str}}</span>
+            </nav>
+            <div class="card">
+                <div class="card-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="search" id="searchInput" class="form-control" placeholder="{{#str}} findplace, mod_treasurehunt{{/str}}..." aria-label="Search">
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-content">
+                <div class="search-loading">
+                    {{#pix}} bootstrap/loading, treasurehunt, Loading {{/pix}}
+                </div>
+                <div id="searchsResults" class="list-group"></div>
+            </div>
+        </div>
+
+
+
+        <!-- Page Content -->
+        <div class="page-content-wrapper">
+            <!-- Header -->
+            <nav class="play-navbar map-navbar">
+                <button class="btn" data-rel="sidebar" data-ref="#searchpanel" data-dismissible>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <span class="title">
+                    {{#pix}} bootstrap/treasurechest, treasurehunt, treasurehunt icon {{/pix}}
+                    {{treasurehunt.name}}
+                </span>
+                <button class="btn" id="playerhelp">
+                    <i class="fa fa-question-circle" aria-hidden="true"></i>
+                </button>
+                <button class="btn dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    {{{user.picture}}}
+                </button>
+                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="view.php?id={{cmid}}">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            {{#str}} exit, mod_treasurehunt{{/str}}
+                        </a>
+                </div>
+            </nav>
+            <!-- Map Container -->
+            <div class="map-container">
+                <div class="treasureoverlay" id="roadended">
+                    {{#str}}roadended, mod_treasurehunt{{/str}}
+                </div>
+                <div id="mapplay"></div>
+            </div>
+            <!-- Bottom buttons -->
+            <div class="play-tools-container">
+                
+                <button id="validatelocation" class="btn play-highlight-btn" data-rel="modal" data-ref="#confirmLocationPopup" style="padding-right: 20px; margin-right: 10px;">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    {{#str}}validatelocation, mod_treasurehunt{{/str}}
+                </button>
+
+                <button id="cluebutton" class="btn play-highlight-btn" data-rel="modal" data-ref="#cluepage" style="padding-right: 20px; margin-right: 10px;">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                    {{#str}}showclue, mod_treasurehunt{{/str}}
+                </button>
+
+                <button id="exit" class="btn play-highlight-btn" data-rel="modal" onclick="window.location.replace('/');">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    {{#str}}exit, mod_treasurehunt{{/str}}
+                </button>
+
+                <button class="btn play-btn" id="validateqr" data-rel="modal" data-ref="#qrpage"><i class="fa fa-qrcode" aria-hidden="true"></i></button>
+            </div>
+
+            <div class="map-tools-container">
+                <button class="btn play-btn geolocation-btn" id="autolocate"><i class="fa fa-map-marker" aria-hidden="true"></i></button>
+                <button class="btn play-btn" data-rel="modal" data-ref="#layerspage" data-dismissible><i class="fa fa-eye" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    {{! end map page }}
+
+    {{! Toast container}}
+    <div class="play-toast-container">
+    </div>
+
+    {{!Popup location confirmation}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}confirmLocationPopup{{/popupid}}
+        {{$popuptitle}}
+            {{#str}} sendlocationtitle, mod_treasurehunt{{/str}}
+        {{/popuptitle}}
+        {{$popupcontent}}
+            <p>{{#str}} sendlocationcontent, mod_treasurehunt{{/str}}</p>
+        {{/popupcontent}}
+        {{$popupfootercontent}}
+            <button type="button" class="btn play-btn close-modal">
+                <i class="fa fa-times" aria-hidden="true"></i>
+                {{#str}} cancel, mod_treasurehunt{{/str}}
+            </button>
+            <button type="button" class="btn play-btn close-modal" id="sendLocation">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{#str}} send, mod_treasurehunt{{/str}}
+            </button>
+        {{/popupfootercontent}}
+    {{/treasurehunt/popup_play_page}}
+
+
+    {{!Popup clue page}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}cluepage{{/popupid}}
+        {{$popupheading}}
+            <span class="title">{{#str}} clue, mod_treasurehunt{{/str}}</span>
+            <button class="btn close-modal close-dialog">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        {{/popupheading}}
+        {{$popupcontent}}
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title d-flex justify-content-between align-items-start">
+                        <h5  id="lastsuccessfulstagename"></h5>
+                        <span class="badge badge-dark" id="lastsuccesfulstagepos"></span>
+                    </div>
+                    <p class="card-text" id="lastsuccessfulstageclue"></p>
+                    <button id="questionbutton" style="display:none" class="btn play-btn" data-rel="modal" data-ref="#questionpage" data-dismissible>
+                        <i class="fa fa-question-circle" aria-hidden="true"></i>
+                        {{#str}} question, mod_treasurehunt{{/str}}
+                    </button>
+                </div>
+            </div>
+        {{/popupcontent}}
+        {{$popupfootercontent}}
+        {{/popupfootercontent}}
+    {{/treasurehunt/popup_play_page}}
+
+
+    {{!Popup notifications}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}notificationsPopup{{/popupid}}
+        {{$popuptitle}}
+            {{#str}} updates, mod_treasurehunt{{/str}}
+        {{/popuptitle}}
+        {{$popupcontent}}
+            <div class="update-list">
+            </div>
+        {{/popupcontent}}
+        {{$popupfootercontent}}
+            <button type="button" class="btn play-btn close-modal" id="acceptupdates">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{#str}} continue, mod_treasurehunt{{/str}}
+            </button>
+        {{/popupfootercontent}}
+    {{/treasurehunt/popup_play_page}}
+
+    {{!Popup error}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}errorPopup{{/popupid}}
+        {{$popuptitle}}
+            {{#str}} error, mod_treasurehunt{{/str}}
+        {{/popuptitle}}
+        {{$popupcontent}}
+        {{/popupcontent}}
+        {{$popupfootercontent}}
+            <a href="view.php?id={{cmid}}" class="btn play-btn">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                {{#str}} continue, mod_treasurehunt{{/str}}
+            </a>
+        {{/popupfootercontent}}
+    {{/treasurehunt/popup_play_page}}
+
+    {{!Popup info stage}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}infoStagePopup{{/popupid}}
+        {{$popupheading}}
+            <span class="title"></span>
+            <button class="btn close-modal close-dialog">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        {{/popupheading}}
+        {{$popupcontent}}
+        {{/popupcontent}}
+        {{$popupfooter}}
+        {{/popupfooter}}
+    {{/treasurehunt/popup_play_page}}
+
+    {{!Popup geolocation}}
+    {{< treasurehunt/popup_play_page}}
+        {{$popupid}}geolocationPopup{{/popupid}}
+        {{$popuptitle}}
+            {{#str}} geolocation_needed_title, mod_treasurehunt{{/str}}
+        {{/popuptitle}}
+        {{$popupcontent}}
+            <p>{{#str}} geolocation_needed, mod_treasurehunt{{/str}}</p>
+        {{/popupcontent}}
+        {{$popupfootercontent}}
+            <button type="button" class="btn play-btn close-modal">
+                <i class="fa fa-check" aria-hidden="true"></i>
+                {{#str}} continue, mod_treasurehunt{{/str}}
+            </button>
+        {{/popupfootercontent}}
+    {{/treasurehunt/popup_play_page}}
+
+    {{!Dialog layer page}}
+    {{< treasurehunt/dialog_play_page}}
+        {{$dialogid}}layerspage{{/dialogid}}
+        {{$dialogtitle}}
+            {{#str}} layers, mod_treasurehunt{{/str}}
+        {{/dialogtitle}}
+        {{$dialogcontent}}
+            <h5 class="card-title">{{#str}} mapview, mod_treasurehunt{{/str}}</h5>
+            <div class="list-group" id="layerslist"></div>
+        {{/dialogcontent}}
+    {{/treasurehunt/dialog_play_page}}
+
+    {{!Dialog question page}}
+    {{< treasurehunt/dialog_play_page}}
+        {{$dialogid}}questionpage{{/dialogid}}
+        {{$dialogtitle}}
+            {{#str}} question, mod_treasurehunt{{/str}}
+        {{/dialogtitle}}
+        {{$dialogcontent}}
+            <div class="card">
+                <div class="card-body" id='questionform'></div>
+            </div>
+        {{/dialogcontent}}
+        {{$dialogfooter}}
+            <div class="play-modal-footer">
+                <button type="button" class="btn play-btn" id="sendAnswer">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    {{#str}} send, mod_treasurehunt{{/str}}
+                </button>
+            </div>
+        {{/dialogfooter}}
+    {{/treasurehunt/dialog_play_page}}
+
+
+    {{!Dialog QR page}}
+    {{< treasurehunt/dialog_play_page}}
+        {{$dialogid}}qrpage{{/dialogid}}
+        {{$dialogtitle}}
+            {{#str}} scanQR_scanbutton, mod_treasurehunt{{/str}}
+        {{/dialogtitle}}
+        {{$dialogcontent}}
+		    <div id="previewVideoDiv"><video playsinline id="previewQRvideo" style="width:100%;height:100%"></video></div>
+            <div id="errorQR" style="display:inline">Camera</div>
+        {{/dialogcontent}}
+        {{$dialogfooter}}
+            <div class="play-modal-footer">
+                <button type="button" class="btn play-btn" id="nextcamera">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    {{#str}} nextcamera, mod_treasurehunt{{/str}}
+                </button>
+                <button type="button" class="btn play-btn close-modal">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                    {{#str}} cancel, mod_treasurehunt{{/str}}
+                </button>
+            </div>
+        {{/dialogfooter}}
+    {{/treasurehunt/dialog_play_page}}
+
+</div>
