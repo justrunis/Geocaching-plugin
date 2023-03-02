@@ -135,6 +135,7 @@ if ((has_capability('mod/treasurehunt:play', $context, null, false) && time() > 
         }
         if ((count($userattemptrenderable->attempts) || !$userattemptrenderable->outoftime)
              && !$userattemptrenderable->teacherreview) {
+            // Middle buttons
             $button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;');
             echo $output->single_button(new moodle_url('/mod/treasurehunt/play.php', $urlparams), $string, 'get', $button_attributes);
             echo $output->single_button(new moodle_url('/', ), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
