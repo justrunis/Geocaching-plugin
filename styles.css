@@ -30,7 +30,15 @@ body {
 
 .path-mod-treasurehunt #controlpanel {
   margin: 0 auto;
-  color: yellow;
+  color: 0 auto;
+}
+
+.path-mod-treasurehunt #controlpanel label input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.path-mod-treasurehunt #controlpanel label input[type="text"] {
+  padding-left: 10px;
 }
 
 .path-mod-treasurehunt #mapedit {
@@ -619,11 +627,4 @@ body {
   text-align: center;
   width: 270px;
   background-color: black;
-}
-
-.path-mod-treasurehunt .meniu-button{
-  background-color: #555555;
-  color: white;
-  border: none;
-  cursor: pointer;
 }

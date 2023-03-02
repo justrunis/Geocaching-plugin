@@ -77,13 +77,14 @@ if ($treasurehunt->playwithoutmoving == false && (empty($_SERVER['HTTPS']) || $_
     treasurehunt_notify_error(get_string('warnunsecuregeolocation', 'treasurehunt'));
 }
 // Conditions to show the intro can change to look for own settings or whatever.
+/*
 if (treasurehunt_view_intro($treasurehunt)) {
     echo $output->box(
         format_module_intro('treasurehunt', $treasurehunt, $cm->id),
         'generalbox mod_introbox',
         'treasurehuntintro'
     );
-}
+}*/
 echo $output->box_start('treasurehuntinfo', 'treasurehuntinfo');
 echo treasurehunt_view_info($treasurehunt, $course->id);
 
@@ -126,7 +127,7 @@ if ((has_capability('mod/treasurehunt:play', $context, null, false) && time() > 
             $teacherreview
         );
 
-        // Si no ha finalizado pongo el botón de jugar.
+        // If it has not finished I put the play button.
         $urlparams = array('id' => $userattemptrenderable->coursemoduleid);
         if ($userattemptrenderable->outoftime || $userattemptrenderable->roadfinished) {
             $string = get_string('reviewofplay', 'treasurehunt');
@@ -138,7 +139,7 @@ if ((has_capability('mod/treasurehunt:play', $context, null, false) && time() > 
             // Middle buttons
             $button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;');
             echo $output->single_button(new moodle_url('/mod/treasurehunt/play.php', $urlparams), $string, 'get', $button_attributes);
-            echo $output->single_button(new moodle_url('/', ), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
+            echo $output->single_button(new moodle_url('/'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
             //echo $output->single_button(new moodle_url('/', $urlparams), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
         }
         // Output user attempt history.

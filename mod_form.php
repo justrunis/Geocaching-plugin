@@ -129,6 +129,7 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->disabledIf('gradepenanswer', 'grade[modgrade_type]', 'neq', 'point');
 
         // Custom background.
+        /*
         $mform->addElement('header', 'custommaps', get_string('custommapping', 'treasurehunt'));
         $mform->setExpanded('custommaps', false);
 
@@ -146,8 +147,10 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->addHelpButton('customwmsparams', 'customwmsparams', 'treasurehunt');
         $mform->setType('customwmsparams', PARAM_RAW);
         $mform->disabledIf('customwmsparams', 'customlayerwms', 'eq', '');
+        */
 
         // Local file overlay.
+        /*
         $mform->addElement(
             'filemanager',
             'custombackground',
@@ -200,8 +203,9 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->addRule('custommapmaxlat', get_string('errnumeric', 'treasurehunt'), 'numeric', null, 'client');
         $mform->disabledIf('custommapmaxlat', 'customlayername', 'eq', '');
         $mform->disabledIf('custommapmaxlat', 'customlayertype', 'eq', 'nongeographic');
+        */
 
-        // Add standard elements, common to all modules. Ajustes comunes (Visibilidad, número ID y modo grupo).
+        // Add standard elements, common to all modules. Common settings (Visibility, ID number and group mode)
         $this->standard_coursemodule_elements();
         // Add standard buttons, common to all modules. Botones.
         $this->add_action_buttons(true);
@@ -334,9 +338,11 @@ class mod_treasurehunt_mod_form extends moodleform_mod
     {
         $mapconfig = treasurehunt_build_custommappingconfig($data);
         $data->custommapconfig = $mapconfig === null ? null : json_encode($mapconfig);
+        /*
         if ($data->customlayertype === 'nongeographic') {
             $data->playwithoutmoving = "1";
         }
+        */
     }
 
     /**

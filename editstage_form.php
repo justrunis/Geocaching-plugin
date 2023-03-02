@@ -69,9 +69,10 @@ class stage_form extends moodleform {
         // Aqui anadimos la regla del tamano maximo de la cadena.
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
 
-        $mform->addElement('advcheckbox', 'playstagewithoutmoving', get_string('playstagewithoutmoving', 'treasurehunt'));
-        $mform->addHelpButton('playstagewithoutmoving', 'playstagewithoutmoving', 'treasurehunt');
+        //$mform->addElement('advcheckbox', 'playstagewithoutmoving', get_string('playstagewithoutmoving', 'treasurehunt'));
+        //$mform->addHelpButton('playstagewithoutmoving', 'playstagewithoutmoving', 'treasurehunt');
 
+        /*
         $mform->addElement('text', 'qrtext', get_string('playstagewithqr', 'treasurehunt'), array('size' => '64'));
         $mform->addHelpButton('qrtext', 'playstagewithqr', 'treasurehunt');
         $mform->setType('qrtext', PARAM_RAW);
@@ -92,6 +93,7 @@ class stage_form extends moodleform {
                 '<button id="id_stopQR" onclick="return false;" style="display:none">Stop</button>' .
                 '</center></div>');
 
+        */
         $mform->addElement('header', 'restrictionsdiscoverstage',
                 get_string('restrictionsdiscoverstage', 'treasurehunt'));
         // Add restrict access completion activity.

@@ -1218,13 +1218,15 @@ function treasurehunt_set_custombackground($data)
     global $DB;
     $fs = get_file_storage();
     $cmid = $data->coursemodule;
-    $draftitemid = $data->custombackground;
+    //$draftitemid = $data->custombackground;
 
     $context = context_module::instance($cmid);
+    /*
     if ($draftitemid) {
         $options = array('subdirs' => false, 'embed' => false);
         file_save_draft_area_files($draftitemid, $context->id, 'mod_treasurehunt', 'custombackground', 0, $options);
     }
+    */
     $files = $fs->get_area_files($context->id, 'mod_treasurehunt', 'custombackground', 0, 'sortorder', false);
     if (count($files) == 1) {
         // Only one file attached, set it as main file automatically.

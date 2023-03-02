@@ -53,7 +53,7 @@ define([
         .get_strings(stringQueried)
         .done((strings) => {
           $(".treasurehunt-editor-loader").hide();
-          configureEditIntro(intro, strings, terms);
+          //configureEditIntro(intro, strings, terms);
           intro.start();
         })
         .fail(notification.exception);
