@@ -87,6 +87,7 @@ if (treasurehunt_view_intro($treasurehunt)) {
 }*/
 echo $output->box_start('treasurehuntinfo', 'treasurehuntinfo');
 echo treasurehunt_view_info($treasurehunt, $course->id);
+$button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;', 'class' => 'btn');
 
 // Render the list the attempts of the users or the groups.
 $viewusersattemptscap = has_capability('mod/treasurehunt:viewusershistoricalattempts', $context);
@@ -137,9 +138,14 @@ if ((has_capability('mod/treasurehunt:play', $context, null, false) && time() > 
         if ((count($userattemptrenderable->attempts) || !$userattemptrenderable->outoftime)
              && !$userattemptrenderable->teacherreview) {
             // Middle buttons
-            $button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;');
             echo $output->single_button(new moodle_url('/mod/treasurehunt/play.php', $urlparams), $string, 'get', $button_attributes);
-            echo $output->single_button(new moodle_url('/'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
+            //echo $output->single_button(new moodle_url('/'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
+
+            $url = new moodle_url('/');
+            $link = html_writer::link($url->out(false), get_string('exit', 'treasurehunt'), $button_attributes);
+            $exit_button = html_writer::tag('div', $link, array('class' => 'btn'));
+            echo $exit_button;
+
             //echo $output->single_button(new moodle_url('/', $urlparams), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
         }
         // Output user attempt history.
@@ -157,11 +163,12 @@ if (has_capability('mod/treasurehunt:managetreasurehunt', $context)
 }
 if (has_capability('mod/treasurehunt:managetreasurehunt', $context)) {
     $urlparams = array('id' => $cm->id);
-    $button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;');
+
     echo $output->single_button(new moodle_url('/mod/treasurehunt/edit.php', $urlparams), get_string('edittreasurehunt', 'treasurehunt'), 'get', $button_attributes);
     echo $output->single_button(new moodle_url('/mod/treasurehunt/clearhunt.php', $urlparams), get_string('cleartreasurehunt', 'treasurehunt'), 'get', $button_attributes);
     echo $output->single_button(new moodle_url('/mod/treasurehunt/gpx_viewer.php', $urlparams), get_string('trackviewer', 'treasurehunt'), 'get', $button_attributes);
-    echo $output->single_button(new moodle_url('/'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
+    //echo $output->single_button(new moodle_url('/'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
+    echo $exit_button;
     //echo $output->single_button(new moodle_url('/?redirect=0'), get_string('exit', 'treasurehunt'), 'get', $button_attributes);
     
 }
