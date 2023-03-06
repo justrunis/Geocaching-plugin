@@ -64,6 +64,7 @@ body {
   display: block;
   cursor: default;
   clear: both;
+  border-spacing: 15px;
 }
 
 .path-mod-treasurehunt #stagelist {

@@ -18,9 +18,10 @@
  * Page to edit instances
  *
  * @package   mod_treasurehunt
- * @copyright 2016 onwards Adrian Rodriguez Fernandez <huorwhisp@gmail.com>, Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @copyright 2016 onwards Adrian Rodriguez Fernandez <huorwhisp@gmail.com>, Juan Pablo de Castro <jpdecastro@tel.uva.es>, Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @author Adrian Rodriguez <huorwhisp@gmail.com>
  * @author Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @author Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @license   http:// www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 // Replace treasurehunt with the name of your module and remove this line.
@@ -117,6 +118,20 @@ echo $OUTPUT->container_end();
 echo $OUTPUT->box(get_string('errvalidroad', 'treasurehunt'), 'alert alert-error invisible', 'errvalidroad');
 echo $OUTPUT->box(get_string('erremptystage', 'treasurehunt'), 'alert alert-error invisible', 'erremptystage');
 // echo $OUTPUT->box($OUTPUT->help_icon('edition', 'treasurehunt', ''), 'invisible', 'controlpanel');
+
+$back_button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;', 'class' => 'btn');
+$current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$query_string = parse_url($current_url, PHP_URL_QUERY);
+parse_str($query_string, $query_params);
+$id = $query_params['id'];
+
+$urlparams = array('id' => $id);
+
+$url = new moodle_url('/mod/treasurehunt/view.php', $urlparams);
+$back_button_link = html_writer::link($url->out(false), get_string('backtoview', 'treasurehunt'), $back_button_attributes);
+$back_button = html_writer::tag('div', $back_button_link, array('class' => 'btn'));
+
+
 $buttons = "<button id=\"addroad\" class=\"btn btn-dark\" >" . get_string('treasurehunt:addroad', 'treasurehunt') ."</button>";
 $buttons .= "<button id=\"addstage\" class=\"btn btn-dark\" disabled=\"disabled\">" . get_string('treasurehunt:addstage', 'treasurehunt') . "</button>";
 $buttons .= "<button id=\"drawmode\" class=\"btn btn-dark\" disabled=\"disabled\">" . get_string('drawmode', 'treasurehunt') . "</button>";
@@ -124,6 +139,8 @@ $buttons .= "<button id=\"editmode\" class=\"btn btn-dark\" disabled=\"disabled\
 $buttons .= "<button id=\"navmode\" class=\"btn btn-dark\" disabled=\"disabled\">" . get_string('browsemode', 'treasurehunt') . "</button>";
 $buttons .= "<button id=\"savestage\" class=\"btn btn-dark\" disabled=\"disabled\">" . get_string('save', 'treasurehunt') . "</button>";
 $buttons .= "<button id=\"removefeature\" class=\"btn btn-dark\" disabled=\"disabled\">" . get_string('remove', 'treasurehunt') . "</button>";
+$buttons .= $back_button;
+$buttons .= "</div>";
 echo $OUTPUT->box($buttons, "box py-3 ui-widget-header ui-corner-all", 'controlpanel');
 echo $OUTPUT->box(null, 'invisible', 'stagelistpanel');
 echo $OUTPUT->box(null, null, 'mapedit');

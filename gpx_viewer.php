@@ -18,8 +18,9 @@
  * Track viewer
  *
  * @package   mod_treasurehunt
- * @copyright  Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @copyright  Juan Pablo de Castro <jpdecastro@tel.uva.es>, Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @author Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @author Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 require_once('../../config.php');
@@ -85,5 +86,24 @@ echo $OUTPUT->box($controls, 'visible', 'controlpanel');
 echo $OUTPUT->box('', null, 'mapgpx');
 echo $OUTPUT->container_end();
 echo $OUTPUT->box('', null, 'info');
+
+$button_attributes = array('style' => 'background-color: #555555; color: white; border: none; cursor: pointer;', 'class' => 'btn');
+
+$current_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$query_string = parse_url($current_url, PHP_URL_QUERY);
+parse_str($query_string, $query_params);
+$id = $query_params['id'];
+
+$urlparams = array('id' => $id);
+
+$url = new moodle_url('/mod/treasurehunt/view.php', $urlparams);
+$link = html_writer::link($url->out(false), get_string('backtoview', 'treasurehunt'), $button_attributes);
+$exit_button = html_writer::tag('div', $link, array('class' => 'btn'));
+echo $exit_button;
+
+$url = new moodle_url('/');
+$link = html_writer::link($url->out(false), get_string('exit', 'treasurehunt'), $button_attributes);
+$exit_button = html_writer::tag('div', $link, array('class' => 'btn'));
+echo $exit_button;
 
 echo $output->footer();

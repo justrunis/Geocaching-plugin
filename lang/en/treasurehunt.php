@@ -18,9 +18,10 @@
  * Strings for component 'geocaching', language 'en'
  *
  * @package   mod_treasurehunt
- * @copyright 2016 onwards Adrian Rodriguez Fernandez <huorwhisp@gmail.com>, Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @copyright 2016 onwards Adrian Rodriguez Fernandez <huorwhisp@gmail.com>, Juan Pablo de Castro <jpdecastro@tel.uva.es>, Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @author Adrian Rodriguez Fernandez <huorwhisp@gmail.com>
  * @author Juan Pablo de Castro <jpdecastro@tel.uva.es>
+ * @author Justinas Runevičius <justinas.runevicius@distance.ktu.lt>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
@@ -136,6 +137,7 @@ $string['eventstagecreated'] = 'Stage created';
 $string['eventstagedeleted'] = 'Stage deleted';
 $string['eventstageupdated'] = 'Stage updated';
 $string['exit'] = 'Back to start';
+$string['backtoview'] = 'Back to view page';
 $string['failedlocation'] = 'Failed location';
 $string['faillocation'] = 'It is not the right place';
 $string['findplace'] = 'Find a place';
