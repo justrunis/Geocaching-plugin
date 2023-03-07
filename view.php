@@ -39,6 +39,13 @@ $context = context_module::instance($cm->id);
 require_login($course, true, $cm);
 require_capability('mod/treasurehunt:view', $context);
 
+require_once(__DIR__ . '/../../config.php'); // include Moodle configuration
+require_login(); // require user to be logged in
+
+if (!is_siteadmin()) {
+    redirect('play.php?id=' . $cm->id);
+}
+
 $treasurehunt = $DB->get_record('treasurehunt', array('id' => $cm->instance), '*', MUST_EXIST);
 $PAGE->set_activity_record($treasurehunt);
 

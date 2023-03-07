@@ -59,21 +59,18 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->addRule('name', null, 'required', null, 'client');
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
 
-        // Adding the standard "intro" and "introformat" fields. Esto sirve para poner la descripción, si quieres
-        // que aparezca en la portada, etc.
+        // Adding the standard "intro" and "introformat" fields. This is used to put the description, if you want
+        // it to appear on the cover, etc.
         $this->standard_intro_elements();
         $mform->addElement('advcheckbox', 'playwithoutmoving', get_string('playwithoutmoving', 'treasurehunt'));
         $mform->addHelpButton('playwithoutmoving', 'playwithoutmoving', 'treasurehunt');
+
         // Select player interface.
         $select = $mform->addElement('select', 'playerstyle', get_string('playerstyle', 'treasurehunt'), treasurehunt_get_playerstyles());
-
         // Set the default value of the 'playerstyle' element
-        $mform->setConstant('playerstyle', $treasurehuntconfig->defaultplayerstyle);
-        
+        $mform->setConstant('playerstyle', $treasurehuntconfig->defaultplayerstyle); 
         // Hide the 'playerstyle' element from the user
         $mform->removeElement('playerstyle');
-        
-
         // Disable the select element
         $select->freeze();
 
@@ -105,7 +102,7 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->addElement('advcheckbox', 'groupmode', get_string('groupmode', 'treasurehunt'));
         $mform->addHelpButton('groupmode', 'groupmode', 'treasurehunt');
 
-        // Add standard grading elements. Calificación.
+        // Add standard grading elements. Qualification.
         $this->standard_grading_coursemodule_elements();
         // If is not an update.
         if (empty($this->_cm)) {

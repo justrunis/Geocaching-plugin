@@ -418,7 +418,7 @@ I18N;
                                 $name = $userorgroup->name;
                                 if ($progress->viewpermission) {
                                     $params = array('id' => $progress->coursemoduleid, 'groupid' => $userorgroup->id);
-                                    $url = new moodle_url('/mod/treasurehunt/view.php', $params);
+                                    $url = new moodle_url('/mod/treasurehunt/play.php', $params);
                                     $icon = $this->output->pix_icon('t/preview', get_string('userattempthistory', 'treasurehunt', $name));
                                     $name = $name . ' ' . html_writer::link($url, $icon);
                                 }
@@ -430,7 +430,7 @@ I18N;
                                 $name = $userpic . html_writer::link($userurl, $fullname);
                                 if ($progress->viewpermission) {
                                     $params = array('id' => $progress->coursemoduleid, 'userid' => $userorgroup->id);
-                                    $url = new moodle_url('/mod/treasurehunt/view.php', $params);
+                                    $url = new moodle_url('/mod/treasurehunt/play.php', $params);
                                     $icon = $this->output->pix_icon('t/preview', get_string('userattempthistory', 'treasurehunt', $fullname));
                                     $name .= ' ' . html_writer::link($url, $icon);
                                 }
