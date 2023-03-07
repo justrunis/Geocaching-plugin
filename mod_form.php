@@ -66,8 +66,13 @@ class mod_treasurehunt_mod_form extends moodleform_mod
         $mform->addHelpButton('playwithoutmoving', 'playwithoutmoving', 'treasurehunt');
         // Select player interface.
         $select = $mform->addElement('select', 'playerstyle', get_string('playerstyle', 'treasurehunt'), treasurehunt_get_playerstyles());
-        //$mform->addHelpButton('playerstyle', 'playerstyle', 'treasurehunt');
-        $mform->setDefault('playerstyle', $treasurehuntconfig->defaultplayerstyle);
+
+        // Set the default value of the 'playerstyle' element
+        $mform->setConstant('playerstyle', $treasurehuntconfig->defaultplayerstyle);
+        
+        // Hide the 'playerstyle' element from the user
+        $mform->removeElement('playerstyle');
+        
 
         // Disable the select element
         $select->freeze();

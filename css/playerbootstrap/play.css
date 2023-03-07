@@ -102,7 +102,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-  background-image: linear-gradient(315deg, #006877 0, #09203f 74%);
+   /* fallback for old browsers */
+   background: #6a11cb;
+
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+ 
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
   color: white;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
     0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
@@ -178,10 +185,16 @@
 
 /* Buttons */
 #page-mod-treasurehunt-play .play-btn {
-  background-color: #0097a7;
-  border-color: #0097a7;
-  color: #ffffff;
+  /* fallback for old browsers */
+  background: #6a11cb;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
   border-radius: 5px;
+  color: white;
 }
 
 #page-mod-treasurehunt-play .play-btn:hover,
@@ -221,7 +234,14 @@
   min-height: 55px;
   width: auto;
   height: auto;
-  background-image: linear-gradient(315deg, #006877 0, #09203f 74%);
+   /* fallback for old browsers */
+   background: #6a11cb;
+
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+ 
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
   border: none;
   border-radius: 30px 30px 0 0;
   padding: 0 30px;
@@ -231,7 +251,14 @@
 }
 
 #page-mod-treasurehunt-play .play-tools-container .play-highlight-btn:hover {
-  background-image: linear-gradient(315deg, #09203f 0, #006877 74%);
+   /* fallback for old browsers */
+   background: #6a11cb;
+
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
+ 
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   background: linear-gradient(to right, rgba(106, 17, 203, 0.9), rgba(37, 117, 252, 0.9));
 }
 
 /* sidebar mask*/

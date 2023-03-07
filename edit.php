@@ -107,7 +107,7 @@ echo $OUTPUT->heading_with_help($title, 'edition', 'treasurehunt');
 echo $OUTPUT->container_end();
 // Conditions to show the intro can change to look for own settings or whatever.
 if ($treasurehunt->intro) {
-    echo $OUTPUT->box(format_module_intro('treasurehunt', $treasurehunt, $cm->id), 'generalbox mod_introbox', 'treasurehuntintro');
+    //echo $OUTPUT->box(format_module_intro('treasurehunt', $treasurehunt, $cm->id), 'generalbox mod_introbox', 'treasurehuntintro');
 }
 // treasurehunt_notify_info(get_string('editactivity_help', 'treasurehunt'), 'info');
 echo $OUTPUT->container_start("treasurehunt-editor", "treasurehunt-editor");

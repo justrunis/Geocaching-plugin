@@ -245,7 +245,7 @@ $string['modulename'] = 'Geocaching';
 $string['modulename_help'] = 'This module will be used to perform an activity geolocation.
 Outdoor, indoor and virtual-map treasure-chases with geolocation and QR codes.
 This module for Moodle allows to organize outdoor-serious-games with your players.
-TreasureHunt implements a browser-based play application (no need to install any native app) and a geographical editor for encoding the stages of the game.';
+Geocaching implements a browser-based play application (no need to install any native app) and a geographical editor for encoding the stages of the game.';
 $string['modulenameplural'] = 'Geocachings';
 $string['movingplay'] = 'Moving play';
 $string['multiplegroupingsplay'] = 'Your group has assigned more than one road, so you can not play the activity.';
@@ -418,7 +418,7 @@ $string['roads_tour'] = 'In this area you will find the different roads of your 
 $string['save_tour'] = 'After drawing your locations, don\'t forget to save your changes.';
 $string['searchlocation_tour'] = 'With this search area you can find your way rapidly';
 $string['stages_tour'] = 'In this area you will find the stages of the selected road. Select each stage to zoom to the actual location in the map and begin to edit its geometries by clicking on them and the Edit/Draw buttons above.';
-$string['welcome_edit_tour'] = 'Welcome to the authoring page of TreasureHunt. ';
+$string['welcome_edit_tour'] = 'Welcome to the authoring page of Geocaching. ';
 $string['welcome_play_tour'] = '<span style="font-size: 1.5em; font-weight: bold">Welcome to your geocaching!</span><br>This map and the clues will be your guide.';
 $string['bigbutton_play_tour'] = 'This is your best friend.<br>A click and you are shown <b>challenges</b> or valuable <b>hints</b>.';
 $string['autolocate_tour'] = 'Show your <b>current location</b>.<br>(give permissions to use "location" when asked)';
